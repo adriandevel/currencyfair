@@ -1,4 +1,6 @@
-Currency Fair
+###############################################
+### Currency Fair - Market Trade Processor  ###
+###############################################
 
 
 The project uses nodeJS, redis and web-sockets. All the logs are saved to a redis list and every 8 seconds chunks of 10 logs are processed and send to the front-end through web-sockets.
