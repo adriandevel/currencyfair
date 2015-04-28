@@ -1,0 +1,30 @@
+extends layout
+
+block content
+	h1.
+		Send Messages
+
+	div.loginbox
+		form(name="login", action="", method="post")
+			input(type="button", id="sendBtn" value="Send")
+
+	script.
+		$( document ).ready(function() {
+			$('#sendBtn').on("click", function(){	
+				var log_message = {"userId": "134256", "currencyFrom": "EUR", "currencyTo": "GBP", "amountSell": 1000, "amountBuy": 747.10, "rate": 0.7471, "timePlaced" : "24-JAN-15 10:27:44", "originatingCountry" : "FR"};
+				$.ajax({
+					type: "POST",
+					url: "/",
+					// The key needs to match your method's input parameter (case-sensitive).
+					data: JSON.stringify({ log: log_message, securityToken: 12345 }),
+					contentType: "application/json; charset=utf-8",
+					dataType: "json",
+					success: function(data){console.log(data)},
+					failure: function(errMsg) {
+						alert(errMsg);
+					}
+				});
+			});
+
+
+		});
